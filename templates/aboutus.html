@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>내날맑 소개 :)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+  <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Montserrat:400,700|Roboto&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+  <link href="{{ url_for('static', filename='css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+  .btn_about{
+    background-color: #F9AD81; 
+    border: none;
+    height: 40px;
+    width: 200px;
+    border-radius: 20px;
+  }
+</style>
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    
+    <div class="header-top">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 text-center">
+            <a href="/" class="site-logo">
+              <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Image" class="img-fluid">
+            </a>
+          </div>
+          <a href="#" class="mx-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+                class="icon-menu h3"></span></a>
+        </div>
+      </div>
+      
+
+
+      {% if session['logged_in'] == False %}
+      
+      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mx-auto">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+              <li ><a href="/" class="nav-link text-left">홈으로 가기</a></li>
+              <li class="active"><a href="/aboutus" class="nav-link text-left">소개</a></li>
+              <li><a href="/board/list" class="nav-link text-left">이용후기</a></li>
+              <li ><a href="/signin" class="nav-link text-left">로그인</a></li>
+              <li><a href="/register" class="nav-link text-left">회원가입</a></li>
+              <li><a href="/booking" class="nav-link text-left">장비예약하기</a></li>
+            </ul>                                                                                                                                                                                                                                                                                          
+            </nav>
+      
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    
+    {% else %}
+    <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mx-auto">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+              <li ><a href="/" class="nav-link text-left">홈으로 가기</a></li>
+              <li class="active"><a href="/aboutus" class="nav-link text-left">소개</a></li>
+              <li><a href="/board/list" class="nav-link text-left">이용후기</a></li>
+              <li><a href="/logout" class="nav-link text-left">로그아웃</a></li>
+              <li><a href="/mypage" class="nav-link text-left">마이페이지</a></li>
+              <li><a href="/register" class="nav-link text-left">회원가입</a></li>
+              <li><a href="/booking" class="nav-link text-left">장비예약하기</a></li>
+            </ul>                                                                                                                                                                                                                                                                                          
+            </nav>
+      
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    
+    {% endif %}
+    
+    </div>
+
+    
+    
+
+    <div class="hero-2" style="background-image: url('../static/images/hero_2.jpg');">
+     <div class="container">
+        <div class="row justify-content-center text-center align-items-center">
+          <div class="col-md-8">
+            <span class="sub-title">내일 날씨는 맑음 :)</span>
+            <h2>소 개</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section py-5 custom-border-bottom" data-aos="fade">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6">
+            <div class="block-16">
+              <figure>
+                <img src="{{ url_for('static', filename='images/hero_1.jpg') }}" alt="Image placeholder" class="img-fluid">
+    
+              </figure>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+    
+    
+            <div class="site-section-heading pt-3 mb-4">
+              <strong style="font-size: 20px;">가볍게</strong>
+              <h2 class="text-black font-heading-serif">귀찮은 짐싸기 NO!</h2>
+                <h2 class="text-black font-heading-serif"> 이제 가볍게 떠나세요</h2>
+            </div>
+            <p>텐트, 침낭, BBQ, 조명, 물놀이 등 캠핑에 필요한 모든 준비는 '내일 날씨는 맑음' 에서 해드립니다</p>
+            <button class="btn_about" type="submit" value="submit" ><a href="/booking">캠핑장비보러가기</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div class="site-section py-5 bg-light custom-border-bottom" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 order-md-2">
+            <div class="block-16">
+              <figure>
+                <img src="{{ url_for('static', filename='images/hero_2.jpg') }}" alt="Image placeholder" class="img-fluid ">
+    
+              </figure>
+            </div>
+          </div>
+          <div class="col-md-5 mr-auto">
+    
+    
+            <div class="site-section-heading pt-3 mb-4">
+              <strong style="font-size: 20px;">저렴하게</strong>
+              <h2 class="text-black font-heading-serif">이제 구입하지 마세요!</h2>
+                <h2 class="text-black font-heading-serif"> 저렴하게 대여하세요</h2>
+            </div>
+            <p>스노우파크, 노스페이스, 콜맨 등 인기 캠핑 브랜드의 장비를 저렴하게 이용하세요 .</p>
+            <button class="btn_about" type="submit" value="submit" ><a href="/booking">장비보러가기</a></button>
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section py-5 custom-border-bottom" data-aos="fade">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-6">
+            <div class="block-16">
+              <figure>
+                <img src="{{ url_for('static', filename='images/hero_3.jpg') }}" alt="Image placeholder" class="img-fluid">
+    
+              </figure>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+    
+    
+            <div class="site-section-heading pt-3 mb-4">
+              <strong style="font-size: 20px;">가깝게</strong>
+              <h2 class="text-black font-heading-serif">수도권 곳곳의 맑음존을</h2>
+                <h2 class="text-black font-heading-serif">간편히 방문하세요</h2>
+            </div>
+            <p>국내 인기 캠핑 명소의 '맑음존' 에서 간편하게 대여하세요</p>
+            <button class="btn_about" type="submit" value="submit" ><a href="/booking">맑음존 확인하기</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="site-section py-5 bg-light custom-border-bottom" data-aos="fade">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 order-md-2">
+            <div class="block-16">
+              <figure>
+                <img src="{{ url_for('static', filename='images/hero_4.jpg') }}" alt="Image placeholder" class="img-fluid ">
+    
+              </figure>
+            </div>
+          </div>
+          <div class="col-md-5 mr-auto">
+    
+    
+            <div class="site-section-heading pt-3 mb-4">
+              <strong style="font-size: 20px;">간편하게</strong>
+              <h2 class="text-black font-heading-serif">여행 중 변경사항도</h2>
+                <h2 class="text-black font-heading-serif"> 스마트폰으로 간편하게</h2>
+            </div>
+            <p>언제 어디서든 예약과 반납을 편리하게 이용하세요</p>
+            <button class="btn_about" type="submit" value="submit" ><a href="/booking">예약하러가기</a></button>
+            
+            
+    
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="site-section site-section-sm site-blocks-1 border-0" data-aos="fade">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="">
+          <div class="icon mr-4 align-self-start">
+            <span class="icon-truck text-primary"></span>
+          </div>
+          <div class="text">
+            <h2 class="font-heading-serif">복잡한 준비 없이 간편하게</h2>
+            <p>다양한 캠핑장비를 간단한 세트로 이용하세요!</p>
+          
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="icon mr-4 align-self-start">
+            <span class="icon-refresh2 text-primary"></span>
+          </div>
+          <div class="text">
+            <h2 class="font-heading-serif">이제 사지않고 대여하세요</h2>
+            <p>구매할 필요 없이 저렴하게 대여하세요</p>
+            <p>내일 날씨는 맑음의 다양한 장비를 이용하세요</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon mr-4 align-self-start">
+            <span class="icon-help text-primary"></span>
+          </div>
+          <div class="text">
+            <h2 class="font-heading-serif">배송 및 반납장소 변경</h2>
+            <p>배송 및 반납장소 변경 등 내일 날씨는 맑음에 문의하세요</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="owl-carousel owl-slide-3 owl-slide">
+        
+          <blockquote class="testimony">
+            <img src="{{ url_for('static', filename='images/bts.png') }}" alt="Image">
+            <p>&ldquo;아시다시피 저는 감자칩을 매우 좋아합니다. 특히나 캠핑을 가서 캠프파이어를 피워놓고 감자를 얇게 썰어서 구워먹는 감자는 일품이지요. 그러한 의미로 내날맑 풀패키지 예약 여행을 다녀왔는데 아아 뭐랄까 디스이즈 '포테이토'였습니다.&rdquo;</p>
+
+            <p class="small text-primary">&mdash; 김감자</p>
+          </blockquote>
+          <blockquote class="testimony">
+            <img src="{{ url_for('static', filename='images/penguin.png') }}" alt="Image">
+            <p>&ldquo;캠핑을 저는 좋아하지 않았습니다. 짐 챙길것도 많고 아시다시피 제가 굉장히 귀차니즘이 많은 사람이거든요. 하지만 내날맑은 만난 날부터 저는 다시 태어났습니다. 이제부터 저를 캠핑맨이라고 불러주세요.&rdquo;</p>
+           
+            <p class="small text-primary">&mdash; 넥슨왕김정주환</p>
+          </blockquote>
+          <blockquote class="testimony">
+            <img src="{{ url_for('static', filename='images/Fire.png') }}" alt="Image">
+            <p>&ldquo;안녕하세요 뚜르입니다. 아시다시피 저는 html도 처음이고 내날맑도 처음입니다. 하지만 캠핑도 처음이죠. 그렇습니다 저는 다 처음입니다람쥐. 다람쥐라고요? 다람쥐가 영어로 뭔지 아십니까? 답변 부탁드려요. &rdquo;</p>
+            <p class="small text-primary">&mdash; dduR</p>
+          </blockquote>
+          <blockquote class="testimony">
+            <img src="{{ url_for('static', filename='images/HJ.jpg') }}" alt="Image">
+            <p>&ldquo;사랑의불시착을 방영 할 당시 저는 어처구니가 없었습니다. 리정혁보다는 리준택이 훨씬 멋있기 때문이죠. 그나저나 내날맑의 캠핑시스템은 혁신이라고 불러도 과언입니다. 암튼 담에 또 할게요!&rdquo;</p>
+            <p class="small text-primary">&mdash; 리준택</p>
+          </blockquote>
+        
+        </div>
+      </div>
+    </div>
+  
+
+    
+    
+    
+  <!-- .site-wrap -->
+
+  <div class="container-d-flex h-100">
+    <div class="row justify-content-center align-self-center">
+      <div class="container main-section border p-5 bg-white">
+        <h1>찾아오시는 길</h1>
+        <hr>
+        <div class="py-5">
+            <div class="row hidden-md-up">
+                <div class="col-md-6">
+                    <div class="card">
+                      <div id="map" style="width:400;height:300px;"></div>
+                      <div class="card-block">
+                          <h4 class="card-title">과천역 지점</h4>
+                          <p class="card-text p-y-1">경기 과천시 별양로 177</p>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card">
+                     <!-- <img class="card-img-top" src="img/services/picnic.jpg" alt="Card image cap"> -->
+                     <div id="map2" style="width:400;height:300px;"></div>
+                     <div class="card-block">
+                      <h4 class="card-title">강화도 지점</h4>
+                      <!-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> -->
+                      <p class="card-text p-y-1">인천 강화군 강화읍 강화도</p>
+                      
+                    </div>
+                  </div>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                      <div id="map3" style="width:400;height:300px;"></div>
+                      <div class="card-block">
+                          <h4 class="card-title">가평역 지점</h4>
+                          <p class="card-text p-y-1">경기도 가평군 가평읍 문화로 13-42 가평역(신)</p>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card">
+                     <!-- <img class="card-img-top" src="img/services/picnic.jpg" alt="Card image cap"> -->
+                     <div id="map4" style="width:400;height:300px;"></div>
+                     <div class="card-block">
+                      <h4 class="card-title">노원 지점</h4>
+                      <!-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> -->
+                      <p class="card-text p-y-1">서울 노원구 상계로 69-1</p>
+                      
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+      </div>
+
+          <div class="footer-section" style="margin-top:10%">
+            <hr>
+            <div class="row" style="margin-top:20px;">
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4">
+                <div class="footer-item" display="d-inline-block" >
+                  <h5 style="font-size:larger">Contact Info</h5>
+                  <ul>
+                    <p><img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;우림라이온스빌딩 601호,서울특별시 금천구 가산동 371-28</p>
+                    <p><img src="{{ url_for('static', filename='images/phone.png') }}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+82 (02)2025-9000</p>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-4">
+              </div>
+            </div>
+              <div class="copyright">
+                <hr>
+                <div class="small text-center" style="margin-bottom:30px; color:mediumpurple; ">
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by 내일 날씨는 맑음:) </a>
+                </div>
+              </div>
+          </div>
+          
+      
+        </div>
+  <!-- loader -->
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b8bf863cccfcf88913182a90739d1048&libraries=services"></script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b8bf863cccfcf88913182a90739d1048"></script>
+        <!--f584c832996f38bc61e2f50ea043d5f9-->
+        
+        <script>
+              
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };  
+            var mapContainer2 = document.getElementById('map2'), // 지도를 표시할 div 
+            mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };  
+          var mapContainer3 = document.getElementById('map3'), // 지도를 표시할 div 
+              mapOption = {
+              center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+              level: 3 // 지도의 확대 레벨
+        };  
+              var mapContainer4 = document.getElementById('map4'), // 지도를 표시할 div 
+                  mapOption = {
+                  center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                  level: 3 // 지도의 확대 레벨
+              };  
+// 지도를 생성합니다    
+            var map = new kakao.maps.Map(mapContainer, mapOption); 
+            var map2 = new kakao.maps.Map(mapContainer2, mapOption);
+            var map3 = new kakao.maps.Map(mapContainer3, mapOption); 
+            var map4 = new kakao.maps.Map(mapContainer4, mapOption);
+            var geocoder = new kakao.maps.services.Geocoder();
+            var geocoder2 = new kakao.maps.services.Geocoder();
+            var geocoder3 = new kakao.maps.services.Geocoder();
+            var geocoder4 = new kakao.maps.services.Geocoder();
+// 주소로 좌표를 검색합니다
+          geocoder.addressSearch('경기 과천시 별양로 177', function(result, status) {
+
+          // 정상적으로 검색이 완료됐으면 
+          if (status === kakao.maps.services.Status.OK) {
+
+              var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+              // 결과값으로 받은 위치를 마커로 표시합니다
+              var marker = new kakao.maps.Marker({
+                  map: map,
+                  position: coords
+              });
+
+              // 인포윈도우로 장소에 대한 설명을 표시합니다
+              var infowindow = new kakao.maps.InfoWindow({
+                  content: '<div style="width:150px;text-align:center;padding:6px 0;">내날맑 과천점</div>'
+              });
+              infowindow.open(map, marker);
+
+              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+              map.setCenter(coords);
+          } 
+          }); 
+          
+          geocoder2.addressSearch('인천 강화군 강화읍 강화도', function(result, status) {
+
+// 정상적으로 검색이 완료됐으면 
+          if (status === kakao.maps.services.Status.OK) {
+
+              var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+              // 결과값으로 받은 위치를 마커로 표시합니다
+              var marker = new kakao.maps.Marker({
+                  map2: map2,
+                  position: coords
+              });
+
+              // 인포윈도우로 장소에 대한 설명을 표시합니다
+              var infowindow = new kakao.maps.InfoWindow({
+                  content: '<div style="width:150px;text-align:center;padding:6px 0;">내날맑 강화점</div>'
+              });
+              infowindow.open(map2, marker);
+
+              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+              map2.setCenter(coords);
+          } 
+          }); 
+         
+
+          geocoder3.addressSearch('경기도 가평군 가평읍 문화로 13-42 가평역(신)', function(result, status) {
+
+              // 정상적으로 검색이 완료됐으면 
+              if (status === kakao.maps.services.Status.OK) {
+
+                  var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                  // 결과값으로 받은 위치를 마커로 표시합니다
+                  var marker = new kakao.maps.Marker({
+                      map3: map3,
+                      position: coords
+                  });
+
+                  // 인포윈도우로 장소에 대한 설명을 표시합니다
+                  var infowindow = new kakao.maps.InfoWindow({
+                      content: '<div style="width:150px;text-align:center;padding:6px 0;">내날맑 가평점</div>'
+                  });
+                  infowindow.open(map3, marker);
+
+                  // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                  map3.setCenter(coords);
+              } 
+              }); 
+
+          geocoder4.addressSearch('서울 노원구 상계로 69-1', function(result, status) {
+
+          // 정상적으로 검색이 완료됐으면 
+          if (status === kakao.maps.services.Status.OK) {
+
+              var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+              // 결과값으로 받은 위치를 마커로 표시합니다
+              var marker = new kakao.maps.Marker({
+                  map4: map4,
+                  position: coords
+              });
+
+              // 인포윈도우로 장소에 대한 설명을 표시합니다
+              var infowindow = new kakao.maps.InfoWindow({
+                  content: '<div style="width:150px;text-align:center;padding:6px 0;">내날맑 노원점</div>'
+              });
+              infowindow.open(map4, marker);
+
+              // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+              map4.setCenter(coords);
+          } 
+          });      
+</script>
+
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.fancybox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.mb.YTPlayer.min.js') }}"></script>
+
+
+
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

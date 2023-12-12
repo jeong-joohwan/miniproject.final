@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>로그인 :)</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+   
+	<script type="text/javascript">
+  	function signin(){
+	  f.action="/signin";
+	  f.submit();
+  	}
+ 	 </script>
+   
+	<link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Montserrat:400,700|Roboto&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+	<link href="{{ url_for('static', filename='css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+	<div class="site-wrap">
+
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+		  <div class="site-mobile-menu-close mt-3">
+			<span class="icon-close2 js-menu-toggle"></span>
+		  </div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	  </div>
+
+	  <div class="header-top">
+		<div class="container">
+		  <div class="row align-items-center">
+			<div class="col-12 text-center">
+			  <a href="/" class="site-logo">
+				<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Image" class="img-fluid">
+			  </a>
+			</div>
+			<a href="#" class="mx-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+				  class="icon-menu h3"></span></a>
+		  </div>
+		</div>
+		
+  
+		<div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+			<div class="container">
+			  <div class="d-flex align-items-center">         
+				<div class="mx-auto">
+				  <nav class="site-navigation position-relative text-left" role="navigation">
+				  <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+					<li ><a href="/" class="nav-link text-left">홈으로 가기</a></li>
+					<li><a href="/aboutus" class="nav-link text-left">소개</a></li>
+					<li><a href="/board/list" class="nav-link text-left">이용후기</a></li>
+					<li class="active"><a href="/signin" class="nav-link text-left">로그인</a></li>
+					<li><a href="/register" class="nav-link text-left">회원가입</a></li>
+					<li><a href="/booking" class="nav-link text-left">장비예약하기</a></li>
+				  </ul>                                                                                                                                                                                                                                                                                          
+				  </nav>
+				</div>
+			  </div>
+			</div>
+		  </div>  
+
+
+	  <div class="hero-2" style="background-image: url('../static/images/night2.png');">
+		<div class="container">
+		   <div class="row justify-content-center text-center align-items-center">
+			 <div class="col-md-8">
+			   <span class="sub-title">안녕하세요 :)</span>
+			   <h2>로그인 </h2>
+			 </div>
+		   </div>
+		 </div>
+	   </div>
+
+
+	   <div id="myModal">
+		<div class="modal-dialog modal-login">
+			<div class="modal-content">
+				<div class="modal-header">				
+					<h4 class="modal-title">내일 날씨는 맑음 :) </h4>
+					
+				</div>
+				<div class="modal-body">
+					<form action="/signin" method="post">
+						<div class="form-group">
+							<!--여기가 아이디 입력부분!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1-->
+							<input type="text" class="form-control" name="userid" placeholder="아이디(이메일)를 입력하세요" required="required">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요" required="required">
+						</div>
+						<div class="form-group">
+							<input type="submit" class="btn btn-primary btn-block btn-lg" value="로그인" onClick="signin()">
+							<br>
+							<div id="naverIdLogin" class="text-center">
+								<!--<input type="submit" class="btn btn-primary btn-block btn-lg2" value="네이버 아이디로 로그인">
+								--><script type="text/javascript">
+									var naverLogin = new naver.LoginWithNaverId(
+										{
+											clientId: "Bfvmf_9nKNuvTkzS7x4y",
+											callbackUrl: "pOtI0twHno",
+											isPopup: false, /* 팝업을 통한 연동처리 여부 */
+											loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
+										}
+									);
+									
+									/* 설정정보를 초기화하고 연동을 준비 */
+									naverLogin.init();
+									
+								</script>
+							</div>
+							
+						</div>
+					</form>
+					<p class="hint-text big"><a href="/register" style="margin-left:30%">아직 회원이 아니신가요?</a></p>				
+				</div>
+			</div>
+		</div>
+	</div>   
+
+	
+	</div>
+	<!-- .site-wrap -->
+	
+
+	<div class="footer-section" style="margin-top:10%">
+		<hr>
+		<div class="row" style="margin-top:20px;">
+		  <div class="col-lg-4"></div>
+		  <div class="col-lg-4">
+			<div class="footer-item" display="d-inline-block" >
+			  <h5 style="font-size:larger">Contact Info</h5>
+			  <ul>
+				<p><img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;우림라이온스빌딩 601호,서울특별시 금천구 가산동 371-28</p>
+				<p><img src="{{ url_for('static', filename='images/phone.png') }}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+82 (02)2025-9000</p>
+			  </ul>
+			</div>
+		  </div>
+		  <div class="col-lg-4">
+		  </div>
+		</div>
+		  <div class="copyright">
+			<hr>
+			<div class="small text-center" style="margin-bottom:30px; color:mediumpurple; ">
+			Copyright &copy;
+			<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by 내일 날씨는 맑음:) </a>
+			</div>
+		  </div>
+	  </div>
+
+
+	
+	
+	
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>캠핑장비대여 :)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<script type="text/javascript">
+	function checklist(){
+	f.action="/checklist"; //결제확인 페이지로 이동
+	f.submit();
+	}
+	
+	window.onload = function(){
+	    var dt = new Date();
+	    var Year = dt.getFullYear();        
+	    var Month = "" + (dt.getMonth()+1);
+	    var Day = "" + dt.getDate();    
+
+	    if(Month.length < 2) Month = "0" + Month;
+	    if(Day.length < 2) Day = "0" + Day;
+
+	    var todayMin = Year.toString() + '-' + Month + '-' + Day;
+	    var todayMax = Year.toString() + '-' + Month + '-' + Day;
+
+	    document.getElementById("startdate").min = todayMin;
+	    document.getElementById("enddate").min = todayMin;
+	} 
+
+</script>
+ 
+	<link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Montserrat:400,700|Roboto&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+	<link href="{{ url_for('static', filename='css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<style>
+    
+  
+  /*----------------------------------------*/
+  /* Booking CSS (예약페이지)
+  /*----------------------------------------*/
+  * {
+box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+cursor: pointer;
+position: absolute;
+top: 40%;
+width: auto;
+padding: 16px;
+margin-top: -50px;
+color: white;
+font-weight: bold;
+font-size: 20px;
+border-radius: 0 3px 3px 0;
+user-select: none;
+-webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+color: #f2f2f2;
+font-size: 12px;
+padding: 8px 12px;
+position: absolute;
+top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+text-align: center;
+background-color: rgba(1, 1, 1, 0.1);
+padding: 2px 16px;
+color: white;
+}
+
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Six columns side by side */
+.column {
+float: left;
+width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+opacity: 1;
+}
+
+  
+  /*----------------------------------------*/
+  /* Booking CSS (예약페이지) 끝!!
+  /*----------------------------------------*/
+  .container{
+     /* box-shadow: 0 0 7px black; */
+  }
+  
+  
+  
+  
+</style>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<section>
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    
+    <div class="header-top">
+      <div class="container">
+        <div class="row align-items-center">
+        <div class="col-12 text-center">
+          <a href="/" class="site-logo">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Image" class="img-fluid">
+          </a>
+        </div>
+        <a href="#" class="mx-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+            class="icon-menu h3"></span></a>
+        </div>
+      </div>
+      
+
+
+    
+		{% if session['logged_in'] == False %}
+      
+      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mx-auto">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+              <li ><a href="/" class="nav-link text-left">홈으로 가기</a></li>
+              <li><a href="/aboutus" class="nav-link text-left">소개</a></li>
+              <li><a href="/board/list" class="nav-link text-left">이용후기</a></li>
+              <li ><a href="/signin" class="nav-link text-left">로그인</a></li>
+              <li><a href="/register" class="nav-link text-left">회원가입</a></li>
+              <li class="active"><a href="/booking" class="nav-link text-left">장비예약하기</a></li>
+            </ul>                                                                                                                                                                                                                                                                                          
+            </nav>
+      
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    
+    {% else %}
+    <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mx-auto">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+              <li ><a href="/" class="nav-link text-left">홈으로 가기</a></li>
+              <li ><a href="/aboutus" class="nav-link text-left">소개</a></li>
+              <li><a href="/board/list" class="nav-link text-left">이용후기</a></li>
+              <li><a href="/logout" class="nav-link text-left">로그아웃</a></li>
+              <li><a href="/mypage" class="nav-link text-left">마이페이지</a></li>
+              <li><a href="/register" class="nav-link text-left">회원가입</a></li>
+              <li class="active"><a href="/booking" class="nav-link text-left">장비예약하기</a></li>
+            </ul>                                                                                                                                                                                                                                                                                          
+            </nav>
+      
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    
+    {% endif %}
+
+
+    
+    
+
+    <div class="hero-2" style="background-image: url('../static/images/head/booking.jpg');">
+     <div class="container">
+        <div class="row justify-content-center text-center align-items-center">
+          <div class="col-md-8">
+            <span class="sub-title">내일 날씨는 맑음 :) </span>
+            <h2>캠핑장비 대여하기</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+
+    <div class="hero-area set-bg other-page" data-setbg="{{ url_for('static', filename='images/about/about_bg.png') }}" style="height:50%";>
+    </div><br><br>
+   
+    
+
+   <div class="container-fluid">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-md-6">
+               <div class="container-d-flex h-10">
+                  <div class="row justify-content-center align-self-center">
+                      <div class="container main-section border p-5 bg-white">
+                        <!-- <table class="table-striped"> 
+                           <div class="card" style="width: 18rem;">
+                              <img class="card-img-top" src="..." alt="Card image cap">
+                              <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                              </div>
+                            </div>-->
+<!-- The Modal -->
+<div class="modal" id="myModal1">
+<div class="modal-dialog modal-xl">
+  <div class="modal-content">
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h4 class="modal-title">피크닉세트</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+      <div class="container">
+        <div class="mySlides">
+          <div class="numbertext">1 / 6</div>
+        <img src="{{ url_for('static', filename='images/services/camping1.png') }}" style="width:3000" style="height:50%" >
+        </div>
+        <div class="mySlides">
+          <div class="numbertext">2 / 6</div>
+            <img src="{{ url_for('static', filename='images/services/picnicmat.jpg') }}" style="width:3000" style="height:50%">
+        </div>
+        <div class="mySlides">
+          <div class="numbertext">3 / 6</div>
+            <img src="{{ url_for('static', filename='images/services/picnicchair.jpg') }}" style="width:3000" style="height:50%">
+        </div>
+        <div class="mySlides">
+          <div class="numbertext">4 / 6</div>
+            <img src="{{ url_for('static', filename='images/services/blanket.jpg') }}" style="width:3000" style="height:50%">
+        </div>
+        <div class="mySlides">
+          <div class="numbertext">5 / 6</div>
+            <img src="{{ url_for('static', filename='images/services/cart.jpg') }}" style="width:3000" style="height:50%">
+        </div>
+        <div class="mySlides">
+          <div class="numbertext">6 / 6</div>
+            <img src="{{ url_for('static', filename='images/services/bed.jpg') }}" style="width:3000" style="height:50%">
+        </div>
+        
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="caption-container">
+          <p id="caption"></p>
+        </div>
+        <div class="row" >
+          <div class="column">
+            <img class="demo cursor" src="{{ url_for('static', filename='images/services/camping1.png') }}" style="width:100%" onclick="currentSlide(1)" alt="텐트사진">
+          </div>
+          <div class="column">
+            <img class="demo cursor" src="{{ url_for('static', filename='images/services/picnicmat.jpg') }}" style="width:100%" onclick="currentSlide(2)" alt="피크닉매트">
+          </div>
+          <div class="column">
+            <img class="demo cursor" src="{{ url_for('static', filename='images/services/picnicchair.jpg') }}" style="width:100%" onclick="currentSlide(3)" alt="의자">
+          </div>
+          <div class="column">
+            <img class="demo cursor" src="{{ url_for('static', filename='images/services/blanket.jpg') }}" style="width:100%" onclick="currentSlide(4)" alt="담요">
+          </div>
+          <div class="column">
+            <img class="demo cursor" src="{{ url_for('static', filename='images/services/cart.jpg') }}" style="width:100%" onclick="currentSlide(5)" alt="카트">
+          </div>
+          <div class="column">
+            <img class="demo cursor" src="{{ url_for('static', filename='images/services/bed.jpg') }}" style="width:100%" onclick="currentSlide(6)" alt="에어베개2개">
+          </div>
+          
+        </div>
+      </div>
+       
+       <h1>캠핑도 트렌드다</h1>
+       빠르게 바뀌어가는 캠핑트렌드! 내날맑의 맞춤형 세트로 극복
+       한번을 빌리더라도 폼나고 최저가로 실속있게!!<br>
+       구성품:텐트+피크닉매트+의자+담요+카트+에어베개2개
+    </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+
+  </div>
+</div>
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModal2">
+ <div class="modal-dialog modal-xl">
+   <div class="modal-content">
+
+     <!-- Modal Header -->
+     <div class="modal-header">
+       <h4 class="modal-title">1인 YOLO세트</h4>
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+
+     <!-- Modal body -->
+     <div class="modal-body">
+         <div class="slideshow-container">
+             <div class="mySlides fade">
+                 <div class="numbertext">1 / 3</div>
+           <img src="{{ url_for('static', filename='images/services/camping1.png') }}" style="width:100%">
+           <div class="text">Caption one</div>
+           </div>
+           <div class="mySlides fade">
+             <div class="numbertext">2 / 3</div>
+             <img src="{{ url_for('static', filename='images/services/camping2.jpg') }}" style="width:100%">
+             <div class="text">Caption Two</div>
+           </div>
+           <div class="mySlides fade">
+             <div class="numbertext">3/ 3</div>
+             <img src="{{ url_for('static', filename='images/services/camping3.jpg') }}" style="width:100%">
+             <div class="text">Caption Three</div>
+           </div>
+           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+           <a class="next" onclick="plusSlides(1)">&#10095;</a>
+           </div>
+           <br>
+           <div style="text-align:center">
+             <span class="dot" onclick="currentSlide(1)"></span>
+             <span class="dot" onclick="currentSlide(2)"></span>
+             <span class="dot" onclick="currentSlide(3)"></span>
+           </div>
+        <h1>캠핑도 트렌드다</h1>
+        빠르게 바뀌어가는 캠핑트렌드! 내날맑의 맞춤형 세트로 극복
+        한번을 빌리더라도 폼나고 최저가로 실속있게!!<br>
+        구성품:텐트+캠핑매트+의자+사계절침낭+테이블
+     </div>
+
+     <!-- Modal footer -->
+     <div class="modal-footer">
+       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+     </div>
+
+   </div>
+ </div>
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModal3">
+ <div class="modal-dialog modal-xl">
+   <div class="modal-content">
+
+     <!-- Modal Header -->
+     <div class="modal-header">
+       <h4 class="modal-title">2인커플세트</h4>
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+
+     <!-- Modal body -->
+     <div class="modal-body">
+
+        <div class="slideshow-container">
+             <div class="mySlides fade">
+                 <div class="numbertext">1 / 3</div>
+           <img src="{{ url_for('static', filename='images/services/camping1.png') }}" style="width:100%">
+           <div class="text">Caption one</div>
+           </div>
+           <div class="mySlides fade">
+             <div class="numbertext">2 / 3</div>
+             <img src="{{ url_for('static', filename='images/services/camping2.jpg') }}" style="width:100%">
+             <div class="text">Caption Two</div>
+           </div>
+           <div class="mySlides fade">
+             <div class="numbertext">3/ 3</div>
+             <img src="{{ url_for('static', filename='images/services/camping3.jpg') }}" style="width:100%">
+             <div class="text">Caption Three</div>
+           </div>
+           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+           <a class="next" onclick="plusSlides(1)">&#10095;</a>
+           </div>
+           <br>
+           <div style="text-align:center">
+             <span class="dot" onclick="currentSlide(1)"></span>
+             <span class="dot" onclick="currentSlide(2)"></span>
+             <span class="dot" onclick="currentSlide(3)"></span>
+           </div>
+        <h1>캠핑도 트렌드다</h1>
+        빠르게 바뀌어가는 캠핑트렌드! 내날맑의 맞춤형 세트로 극복
+        한번을 빌리더라도 폼나고 최저가로 실속있게!!<br>
+        구성품:텐트+캠핑매트+의자2+사계절침낭2+테이블+감성조명+그늘막
+     </div>
+
+     <!-- Modal footer -->
+     <div class="modal-footer">
+       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+     </div>
+
+   </div>
+ </div>
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModal4">
+ <div class="modal-dialog modal-xl">
+   <div class="modal-content">
+
+     <!-- Modal Header -->
+     <div class="modal-header">
+       <h4 class="modal-title">3~4인세트</h4>
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+
+     <!-- Modal body -->
+     <div class="modal-body">
+
+        <div class="slideshow-container">
+             <div class="mySlides fade">
+                 <div class="numbertext">1 / 3</div>
+           <img src="{{ url_for('static', filename='images/services/camping1.png') }}" style="width:100%">
+           <div class="text">Caption one</div>
+           </div>
+           <div class="mySlides fade">
+             <div class="numbertext">2 / 3</div>
+             <img src="{{ url_for('static', filename='images/services/camping2.jpg') }}" style="width:100%">
+             <div class="text">Caption Two</div>
+           </div>
+           <div class="mySlides fade">
+             <div class="numbertext">3/ 3</div>
+             <img src="{{ url_for('static', filename='images/services/camping3.jpg') }}" style="width:100%">
+             <div class="text">Caption Three</div>
+           </div>
+           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+           <a class="next" onclick="plusSlides(1)">&#10095;</a>
+           </div>
+           <br>
+           <div style="text-align:center">
+             <span class="dot" onclick="currentSlide(1)"></span>
+             <span class="dot" onclick="currentSlide(2)"></span>
+             <span class="dot" onclick="currentSlide(3)"></span>
+           </div>
+        <h1>캠핑도 트렌드다</h1>
+        빠르게 바뀌어가는 캠핑트렌드! 내날맑의 맞춤형 세트로 극복
+        한번을 빌리더라도 폼나고 최저가로 실속있게!!<br>
+        구성품:텐트+캠핑매트+의자4+사계절침낭4+테이블+조명+그늘막+조리도구
+     </div>
+
+     <!-- Modal footer -->
+     <div class="modal-footer">
+       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+     </div>
+
+   </div>
+ </div>
+</div>
+<!-- The Modal -->
+
+<div class="modal" id="myModal5">
+ <div class="modal-dialog modal-xl">
+   <div class="modal-content">
+
+     <!-- Modal Header -->
+     <div class="modal-header">
+       <h4 class="modal-title">패밀리세트</h4>
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+
+     <!-- Modal body -->
+     <div class="modal-body">
+        <div class="slideshow-container">
+         <div class="mySlides fade">
+             <div class="numbertext">1 / 3</div>
+       <img src="{{ url_for('static', filename='images/services/camping1.png') }}" style="width:100%">
+       <div class="text">Caption one</div>
+       </div>
+       <div class="mySlides fade">
+         <div class="numbertext">2 / 3</div>
+         <img src="{{ url_for('static', filename='images/services/camping2.jpg') }}" style="width:100%">
+         <div class="text">Caption Two</div>
+       </div>
+       <div class="mySlides fade">
+         <div class="numbertext">3/ 3</div>
+         <img src="{{ url_for('static', filename='images/services/camping3.jpg') }}" style="width:100%">
+         <div class="text">Caption Three</div>
+       </div>
+       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+       <a class="next" onclick="plusSlides(1)">&#10095;</a>
+       </div>
+       <br>
+       <div style="text-align:center">
+         <span class="dot" onclick="currentSlide(1)"></span>
+         <span class="dot" onclick="currentSlide(2)"></span>
+         <span class="dot" onclick="currentSlide(3)"></span>
+       </div>
+        <h1>캠핑도 트렌드다</h1>
+        빠르게 바뀌어가는 캠핑트렌드! 내날맑의 맞춤형 세트로 극복
+        한번을 빌리더라도 폼나고 최저가로 실속있게!!<br>
+        구성품:텐트+캠핑매트+의자4+사계절침낭4+테이블+조명+그늘막+조리도구+랜턴
+     </div>
+
+     <!-- Modal footer -->
+     <div class="modal-footer">
+       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+     </div>
+
+   </div>
+ </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal6">
+ <div class="modal-dialog modal-xl">
+   <div class="modal-content">
+
+     <!-- Modal Header -->
+     <div class="modal-header">
+       <h4 class="modal-title">기타단체세트</h4>
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+     </div>
+
+     <!-- Modal body -->
+     <div class="modal-body">
+         <div class="slideshow-container">
+             <div class="mySlides fade">
+                 <div class="numbertext">1 / 3</div>
+           <img src="{{ url_for('static', filename='images/services/camping1.png') }}" style="width:100%">
+           <div class="text">Caption one</div>
+           </div>
+           <div class="mySlides fade">
+             <div class="numbertext">2 / 3</div>
+             <img src="{{ url_for('static', filename='images/services/camping2.jpg') }}" style="width:100%">
+             <div class="text">Caption Two</div>
+           </div>
+           <div class="mySlides fade">
+             <div class="numbertext">3/ 3</div>
+             <img src="{{ url_for('static', filename='images/services/camping3.jpg') }}" style="width:100%">
+             <div class="text">Caption Three</div>
+           </div>
+           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+           <a class="next" onclick="plusSlides(1)">&#10095;</a>
+           </div>
+           <br>
+           <div style="text-align:center">
+             <span class="dot" onclick="currentSlide(1)"></span>
+             <span class="dot" onclick="currentSlide(2)"></span>
+             <span class="dot" onclick="currentSlide(3)"></span>
+           </div>
+        <h1>캠핑도 트렌드다</h1>
+        빠르게 바뀌어가는 캠핑트렌드! 내날맑의 맞춤형 세트로 극복
+        한번을 빌리더라도 폼나고 최저가로 실속있게!!<br>
+        구성품:텐트+캠핑매트+의자6+사계절침낭6+테이블2+조명2+그늘막2+조리도구+바베큐그릴+화로대+랜턴
+        
+     </div>
+
+     <!-- Modal footer -->
+     <div class="modal-footer">
+       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+     </div>
+
+   </div>
+ </div>
+</div>
+                            <div class="py-5">
+                              
+                                <div class="row hidden-md-up">
+                                  <div class="col-md-6">
+                                    <div class="card">
+                                       <button data-toggle="modal" data-target="#myModal1" style="border: none;">
+                                       <img class="card-img-top" src="{{ url_for('static', filename='images/camping1.png') }}" alt="Card image cap">
+                                      </button>
+                                       <div class="card-block">
+                                        <h4 class="card-title">갑자기피크닉세트(10000원)</h4>
+                                        <!-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> -->
+                                        <p class="card-text p-y-1"></p>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="card">
+                                     <button data-toggle="modal" data-target="#myModal2" style="border: none;">
+                                       <img class="card-img-top" src="{{ url_for('static', filename='images/picnic.jpg') }}" alt="Card image cap">
+                                     </button>
+                                      <div class="card-block">
+                                        <h4 class="card-title">1인 YOLO세트(15000원)</h4>
+                                        <!-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> -->
+                                        <p class="card-text p-y-1"></p>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                 
+                                </div><br>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="card">
+                                     <button data-toggle="modal" data-target="#myModal3" style="border: none;">
+                                       <img class="card-img-top" src="{{ url_for('static', filename='images/camping2.jpg') }}" alt="Card image cap">
+                                     </button>
+                                      <div class="card-block">
+                                        <h4 class="card-title">2인 커플세트(20000원)</h4>
+                                        <!-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> -->
+                                        <p class="card-text p-y-1"></p>
+                                       
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="card">
+                                     <button data-toggle="modal" data-target="#myModal4" style="border: none;">
+                                       <img class="card-img-top" src="{{ url_for('static', filename='images/camping3.jpg') }}" alt="Card image cap">
+                                     </button>
+                                      <div class="card-block">
+                                        <h4 class="card-title">3~4인프랜즈세트(25000원)</h4>
+                                        <!-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> -->
+                                        <p class="card-text p-y-1"></p>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                                <div class="row">
+                                 <div class="col-md-6">
+                                   <div class="card">
+                                     <button data-toggle="modal" data-target="#myModal5" style="border: none;">
+                                    <img class="card-img-top" src="{{ url_for('static', filename='images/camping4.jpg') }}" alt="Card image cap">
+                                 </button>
+                                     <div class="card-block">
+                                       <h4 class="card-title">패밀리 세트(30000원)</h4>
+                                       <!-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> -->
+                                       <p class="card-text p-y-1"></p>
+                                       
+                                     </div>
+                                   </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                   <div class="card">
+                                     <button data-toggle="modal" data-target="#myModal6" style="border: none;">
+                                        
+                                    <img class="card-img-top" src="{{ url_for('static', filename='images/camping6.jpg') }}" alt="Card image cap">
+                                 </button>
+                                     <div class="card-block">
+                                       <h4 class="card-title">기타단체세트(35000원)</h4>
+                                       <!-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> -->
+                                       <p class="card-text p-y-1"></p>
+                                      
+                                     </div>
+                                   </div>
+                                 </div>
+                                 
+                               </div>
+
+                              </div>
+                            </div>
+                       
+                     
+                  </div>
+               </div>     
+            </div>
+            {% if session['logged_in'] == False %}
+               <div class="col-md-6">
+                  <div class="container-d-flex h-10">
+                     <div class="row justify-content-center align-self-center">
+                         <div class="container main-section border p-5 bg-white">
+                           <table class="table-striped">
+                              <div class="text-center">
+                              <h2>예약하기</h2>
+                              <hr>
+                           </div>
+                           <form name= "f" action="/checklist" method="post">
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <span class="form-label">예약자 성함</span>
+                                   <input class="form-control" type="hidden" name="rentusername"  placeholder="예약자이름 입력" required>
+                                    <input class="form-control" type="text" name="rentusername"  placeholder="예약자이름 입력" disabled>
+                                    <br><br>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <span class="form-label">전화번호 입력</span>
+                                    <input class="form-control" type="hidden" name="phone" placeholder="예약자 전화번호 입력" required>
+                                    <input class="form-control" type="tel" name="phone"  placeholder="예약자 전화번호 입력" disabled>
+                                    <br><br>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <span class="form-label">픽업일자</span>
+                              
+                              <input class="form-control" type="date" name="pickupdate" id="startdate" required>
+                              <br><br>
+                              <span class="form-label">반납일자</span>
+                              <input class="form-control" type="date" name="returndate" id="enddate" required>
+                              <br><br>
+                              <span class="form-label">픽업/반납 지점</span>
+                              
+                              <select class="form-control" name="pickreturnplace" aria-required="">
+                                 <br><br>
+                                 <option value="" hidden>맑음존 선택(픽업/반납장소)</option>
+                                 <option>가평점</option>
+                                 <option>강화도점</option>
+                                 <option>노원점</option>
+                                 <option>과천점</option>
+                              </select>                        
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-9">
+                                 <div class="form-group">
+                                    <span class="form-label">장비 유형 선택</span>
+                                    <select class="form-control" name="rentaltype" aria-required="">
+                                       <option>갑자기피크닉세트</option>
+                                       <option aria-selected="">1인YOLO세트</option>
+                                       <option>2인커플세트</option>
+                                       <option>3-4인프랜즈세트</option>
+                                       <option>패밀리세트</option>
+                                       <option>단체세트</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <span class="form-label">수량</span>
+                                    <select class="form-control" name="rentalqty" aria-required="">
+                                       <option>1</option>
+                                       <option>2</option>
+                                       <option>3</option>
+                                       <option>4</option>
+                                       <option>5</option>
+                                       <option>기타</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-9">
+                                 <div class="form-group">
+                                    <span class="form-label">추가 옵션 선택</span>
+                                    <select class="form-control" name="addoption" aria-required="">
+                                       <option>없음(+0원)</option> 
+                                       <option>돈스파이크BBQ세트(1인분기준)(+15000원)</option>
+                                       <option>로맨틱조명세트(+10000원)</option>
+                                       <option>돈스파이크BBQ세트+로맨틱조명세트(+25000원)</option>
+                                       <option>혹한기대비세트(1인용기준)(+15000원)</option>
+                                       <option>물놀이튜브세트(1인용기준)(+15000원)</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <span class="form-label">수량</span>
+                                    <select class="form-control" name="optionqty" aria-required="">
+                                       <option>1</option>
+                                       <option>2</option>
+                                       <option>3</option>
+                                       <option>4</option>
+                                       <option>5</option>
+                                       <option>기타</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-9">
+                                 <div class="form-group">
+                                    <span class="form-label">추가 옵션 선택2</span>
+                                    <select class="form-control" name="addoption2" aria-required="">
+                                       <option>없음(+0원)</option>  
+                                       <option>돈스파이크BBQ세트(1인분기준)(+15000원)</option>
+                                       <option>로맨틱조명세트(+10000원)</option>
+                                       <option>돈스파이크BBQ세트+로맨틱조명세트(+25000원)</option>
+                                       <option>혹한기대비세트(1인용기준)(+15000원)</option>
+                                       <option>물놀이튜브세트(1인용기준)(+15000원)</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <span class="form-label">수량</span>
+                                    <select class="form-control" name="optionqty2" aria-required="">
+                                       <option>1</option>
+                                       <option>2</option>
+                                       <option>3</option>
+                                       <option>4</option>
+                                       <option>5</option>
+                                       <option>기타</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <span class="form-label">기타요청사항</span>
+                              <input class="form-control" type="text" name="note" placeholder="대여시 요청사항을 적어주세요" >
+                           </div>
+                           </form>
+                           <br>
+                           
+                           <div class="form-btn">
+                              <input type="button" value = "로그인이 필요합니다." class="btn btn-primary btn-block" onClick=""></button>
+                              </div>
+                           </table>
+                           
+                           </div>
+
+                        </div>   
+                     </div>
+                  </div>     
+               </div>
+               
+               
+               {% else %}
+
+               <div class="col-md-6">
+                  <div class="container-d-flex h-10">
+                     <div class="row justify-content-center align-self-center">
+                         <div class="container main-section border p-5 bg-white">
+                           <table class="table-striped">
+                              <div class="text-center">
+                              <h2>예약하기</h2>
+                              <hr>
+                           </div>
+                          <form name="f" action="/checklist" method="post">
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <span class="form-label">예약자 성함</span>
+                                   <input class="form-control" type="hidden" name="rentusername" value={{user.name}} placeholder="예약자이름 입력" required>
+                                    <input class="form-control" type="text" name="rentusername" value={{user.name}} placeholder="예약자이름 입력" disabled>
+                                    <br><br>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="form-group">
+                                    <span class="form-label">전화번호 입력</span>
+                                    <input class="form-control" type="hidden" name="phone" value="{{user.phone}}" placeholder="예약자 전화번호 입력" required>
+                                    <input class="form-control" type="tel" name="phone" value="{{user.phone}}" placeholder="예약자 전화번호 입력" disabled>
+                                    <br><br>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <span class="form-label">픽업일자</span>
+                              
+                              <input class="form-control" type="date" name="pickupdate" id="startdate" required>
+                              <br><br>
+                              <span class="form-label">반납일자</span>
+                              <input class="form-control" type="date" name="returndate" id="enddate" required>
+                              <br><br>
+                              <span class="form-label">픽업/반납 지점</span>
+                              
+                              <select class="form-control" name="pickreturnplace" aria-required="">
+                                 <br><br>
+                                 <option value="" hidden>맑음존 선택(픽업/반납장소)</option>
+                                 <option>가평점</option>
+                                 <option>강화도점</option>
+                                 <option>노원점</option>
+                                 <option>과천점</option>
+                              </select>                        
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-9">
+                                 <div class="form-group">
+                                    <span class="form-label">장비 유형 선택</span>
+                                    <select class="form-control" name="rentaltype" aria-required="">
+                                       <option>갑자기피크닉세트</option>
+                                       <option aria-selected="">1인YOLO세트</option>
+                                       <option>2인커플세트</option>
+                                       <option>3-4인프랜즈세트</option>
+                                       <option>패밀리세트</option>
+                                       <option>단체세트</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <span class="form-label">수량</span>
+                                    <select class="form-control" name="rentalqty" aria-required="">
+                                       <option>1</option>
+                                       <option>2</option>
+                                       <option>3</option>
+                                       <option>4</option>
+                                       <option>5</option>
+                                       <option>기타</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-9">
+                                 <div class="form-group">
+                                    <span class="form-label">추가 옵션 선택</span>
+                                    <select class="form-control" name="addoption" aria-required="">
+                                       <option>없음(+0원)</option> 
+                                       <option>돈스파이크BBQ세트(1인분기준)(+15000원)</option>
+                                       <option>로맨틱조명세트(+10000원)</option>
+                                       <option>돈스파이크BBQ세트+로맨틱조명세트(+25000원)</option>
+                                       <option>혹한기대비세트(1인용기준)(+15000원)</option>
+                                       <option>물놀이튜브세트(1인용기준)(+15000원)</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <span class="form-label">수량</span>
+                                    <select class="form-control" name="optionqty" aria-required="">
+                                       <option>1</option>
+                                       <option>2</option>
+                                       <option>3</option>
+                                       <option>4</option>
+                                       <option>5</option>
+                                       <option>기타</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-9">
+                                 <div class="form-group">
+                                    <span class="form-label">추가 옵션 선택2</span>
+                                    <select class="form-control" name="addoption2" aria-required="">
+                                       <option>없음(+0원)</option>  
+                                       <option>돈스파이크BBQ세트(1인분기준)(+15000원)</option>
+                                       <option>로맨틱조명세트(+10000원)</option>
+                                       <option>돈스파이크BBQ세트+로맨틱조명세트(+25000원)</option>
+                                       <option>혹한기대비세트(1인용기준)(+15000원)</option>
+                                       <option>물놀이튜브세트(1인용기준)(+15000원)</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                              <div class="col-sm-3">
+                                 <div class="form-group">
+                                    <span class="form-label">수량</span>
+                                    <select class="form-control" name="optionqty2" aria-required="">
+                                       <option>1</option>
+                                       <option>2</option>
+                                       <option>3</option>
+                                       <option>4</option>
+                                       <option>5</option>
+                                       <option>기타</option>
+                                    </select>
+                                    <span class="select-arrow"></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <span class="form-label">기타요청사항</span>
+                              <input class="form-control" type="text" name="note" placeholder="대여시 요청사항을 적어주세요" >
+                           </div>
+                           <br>
+                           </form>
+                           <div class="form-btn">
+                              <input type="button" value = "지금 예약하기" class="btn btn-primary btn-block" onClick="checklist()"></button>
+                              </div>
+                           </table>
+
+                        </div>   
+                     </div>
+                  </div>     
+               </div>
+             
+               {% endif %}
+             </div>
+         </div>
+
+  </div>
+  </div>
+  <!-- .site-wrap -->
+
+</section>
+
+<div class="footer">
+  <div class="container">		
+    </div>
+    <div class="row">
+    <div class="col-12">
+      <div class="copyright">
+      <div class="footer-item" display="d-inline-block" >
+        <h5>Contact Info</h5>
+        <ul>
+          <li><img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="">우림라이온스빌딩 601호,서울특별시 금천구 가산동 371-28</li>
+          <li><img src="{{ url_for('static', filename='images/phone.png') }}" alt="">+82 (02)2025-9000</li>
+        </ul>
+        </div>
+        <p>
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+           All rights reserved | This website is by 내일 날씨는 맑음 :) </a>
+          </p>
+
+        </div>
+    </div>
+    </div>
+  </div>
+  </div>
+
+</body>
+
+</html>
+  <!-- loader -->
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
+
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.fancybox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.mb.YTPlayer.min.js') }}"></script>
+
+
+
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script>
+    var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  // Next/previous controls
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  // Thumbnail image controls
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
+  }
+  </script>

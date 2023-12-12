@@ -1,0 +1,505 @@
+﻿<!doctype html>
+<html lang="ko">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>내일날씨는맑음 :)</title>
+
+
+		<!--------------------------------------
+			Css Styles Custom stlylesheet 
+		---------------------------------------->
+		<link rel="stylesheet" href="{{ url_for('static', filename='fonts/font-awesome.min.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/flaticon.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.min.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.min.css') }}" type="text/css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/indexstyle.css') }}" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+		<!--------------------------------------
+			header용 추가 
+		---------------------------------------->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		
+		
+	<style>
+			html{width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;font-family:KOMACON;}
+			
+			#fullpage {
+				position:relative;top:0px;z-index:9;width:100%;height:100%;
+				}
+
+			.fullsection{
+				width:100%;height:100%;position:relative;
+				}
+
+			.full1{
+				background-color:black;
+				} 
+
+			.full2{background-image:url('../static/images/full2.jpg');}
+			.full3{background-image:url('../static/images/full3.png');}
+			.full4{
+				background-image:url("../static/images/full4.jpg");
+				min-height:380px;
+				background-position:center;
+				background-repeat: no-repeat;
+				background-size:cover;
+			}
+
+			#fullpage span{
+				display:block;position:absolute;top:50%;
+				left:50%;transform:translate(-50%,-50%);
+				color:#fff;font-size:4em;font-weight:bold;
+				}
+			
+			ul, li{
+				margin-left:20px;;padding:0;list-style:none
+			}
+			
+			.quick {position:fixed;right:20px;top:50%;transform:translateY(-50%); z-index:100000}
+			.quick li {width:10px;height:10px;margin-bottom:10px; border-radius:15px;border:2px solid #fff;cursor:pointer;}
+			.quick .on {background:#fff;}
+
+
+			*{ box-sizing: border-box; }
+
+			body {
+				width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;
+			background : url ("potato.jpg") center center fixed no-repeat;
+		}
+
+		#video {
+			position: absolute;
+			top: -500px;
+			left: -960px;
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			z-index: -1;
+			overflow: hidden;
+		}
+		.googlebtn{
+			position: relative;
+			height: 100px;
+			left:700px;
+			}
+			.gotobook{
+			
+			position:absolute;
+			top:40%;
+			left:50%;
+			margin:-150px 0px 0px -200px;
+			height:120px;
+			width: auto;
+
+			}
+
+		@media screen and (max-width: 800px) {
+			.gotobook{
+			
+			position:absolute;
+			top:40%;
+			left:50%;
+			margin:-150px 0px 0px -200px;
+			height:50px;
+			width: auto;
+			}
+			.section .section-center {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			right:0;
+			
+			-webkit-transform: translateY(-50%);
+			transform: translateY(-50%);
+			}
+			.googlebtn{
+			position:fixed;
+			bottom:0;
+			right:0;
+			width:auto;
+			height: 10%;
+			
+			}
+		}
+
+		
+  /* --------------------------
+        full-index-container 시작
+  ----------------------------*/
+
+
+  /* Container needed to position the button. Adjust the width as needed */
+  .fullsection full1 {
+    position: relative;
+    width: 130%;
+  }
+
+  /* Make the image responsive */
+  .full1 my-video {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Style the button and place it in the middle of the container/image */
+  .full1 .btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(450%, -600%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+	border-radius: 5px;
+	font-family: KOMACON;
+  }
+
+  .full1 .btn:hover {
+	background-color: rgb(79, 20, 214, 0.781);
+    border-color: rgb(79, 20, 214, 0.781);
+  }
+
+  .full2 .btn-lg {
+	background-color: rgb(85,85,80,0.8);
+    font-size: xx-large;
+    margin-left: 65%;
+    border-color: rgb(85,85,80,0.8)
+  }
+  .full2 .btn:hover {
+	background-color: rgba(79, 20, 214, 0.781);
+    border-color: rgb(79, 20, 214, 0.781);
+  }
+  .full2 h{
+	  margin-bottom:10px;
+  }
+
+  .full3 .btn-lg {
+	background-color: rgb(85,85,80,0.8);
+    border-color: rgb(85,85,80,0.8);
+    font-size: xx-large;
+	margin-right: 40%;
+	font-weight: bold;
+  }
+
+  .full3 .btn:hover {
+	background-color: rgba(79, 20, 214, 0.781);
+    border-color: rgb(79, 20, 214, 0.781);
+  }
+
+
+  .fullsection full4 {
+    position: relative;
+	min-height:380px;
+  }
+
+  .fullsection full4 .container-fluid {
+	position: relative;
+	width: 100%;
+	background-color: black;
+  }
+
+
+/* --------------------------
+      curtain navbar 시작
+ ----------------------------*/
+ 
+  .overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+  }
+
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #dddddd;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .overlay a:hover, .overlay a:focus {
+    color: rgba(79, 42, 240, 0.781);
+  }
+
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+
+  @media screen and (max-height: 450px) {
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+    }
+  }
+	</style>
+	</head>
+
+
+
+
+		<body>
+			<!-- 비디오 삽입 -->
+			<div id="fullpage">
+				<div class='quick'><ul></ul></div>
+				<div class="fullsection full1" pageNum="1">
+					<span >
+						<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+						<source src="../static/movie.webm">
+					</video>
+					<!-- <a href="./index.html"><img src="img/TitleLog3_white.png" alt="" style= "height:50px;width:auto;">&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/logoread.png" alt="" style= "height:50px;width:auto;"></a> -->
+
+					</span>
+
+					{% if session['logged_in'] == False %}
+					<div id="myNav" class="overlay">
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+						<div class="overlay-content">
+						  <a href="/aboutus"> 소개</a>
+						  <a href="/board/list">이용후기</a>
+						  <a href="/signin">로그인</a>
+						  <a href="/register">회원가입</a>
+						  <a href="/booking">예약하기</a>
+						</div>
+					  </div>
+					  {% else %}
+					  <div id="myNav" class="overlay">
+						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+						<div class="overlay-content">
+						  <a href="/aboutus"> 소개</a>
+						  <a href="/board/list">이용후기</a>
+						  <a href="/logout">로그아웃</a>
+						  <a href="/mypage">마이페이지</a>
+						  <a href="/register">회원가입</a>
+						  <a href="/booking">예약하기</a>
+						</div>
+					  </div>
+					  {% endif %}
+					  
+					  <button class = "btn" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; menu </button>
+					  <script>
+						function openNav() {
+						document.getElementById("myNav").style.height = "100%";
+						}
+						
+						function closeNav() {
+						document.getElementById("myNav").style.height = "0%";
+						}
+					</script>	
+				</div>
+				<div class="fullsection full2" pageNum="2">
+					<div class="container-fluid">    
+						<div class="container-fluid"> 
+							<div class="container" style="padding-top: 200px;" >
+								<div style="position:relative; margin-left:40%">
+									<h3 style="position: relative;
+									font-weight: 900;
+									font-family: KOMACON;
+									font-size: -webkit-xx-large;
+									text-align: -webkit-right;
+									color: ivory;
+									text-shadow: 0.5px 0 #000000, 0 1px #000000, 2px 0 #000000, 0 -1px #000000;">
+									복잡한 준비없이 간편하게!
+									</h3>
+									<h3 style="position: relative;
+									font-weight: 900;
+									font-family: KOMACON;
+									font-size: -webkit-xx-large;
+									text-align: -webkit-right;
+									color: ivory;
+									text-shadow: 0.5px 0 #000000, 0 1px #000000, 2px 0 #000000, 0 -1px #000000;">								
+									이제 사지말고 가볍게 대여하세요
+									</h3>
+									<a type="button" href="/booking" class="btn btn-primary btn-lg style">예약하러가기</a>
+								</div>
+									
+							</div>
+						</div>
+					</div>	
+				</div>
+
+				<div class="fullsection full3" pageNum="3">
+					<div class="container-fluid">    
+						<div class="container-fluid"> 
+							<div class="container" style="padding-top: 200px; position:relative; margin-right:60%">
+									<h1 style="position : relative; font-weight: 500;
+									font-family: KOMACON;
+									font-size: -webkit-xx-large;
+									color: ivory;
+									text-shadow: 0.5px 0 #000000, 0 1px #000000, 2px 0 #000000, 0 -1px #000000;">
+									캠핑을 가고싶을 때?
+									</h1>
+									<a type="button" href="/booking" class="btn btn-primary btn-lg style">예약하러 가기</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				<div class="fullsection full4" pageNum="4">
+					<div class="container-fluid" >
+
+					<!-- Footer Section Begin -->
+					<footer class="footer-section">
+						<div class="row">
+							<div class="col-lg-4"></div>
+							<div class="col-lg-4">
+								<div class="footer-item" display="d-inline-block" >
+									<h5 style="font-size:larger">Contact Info</h5>
+									<ul>
+										<li><img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;우림라이온스빌딩 601호,서울특별시 금천구 가산동 371-28</li>
+										<li><img src="{{ url_for('static', filename='images/phone.png') }}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+82 (02)2025-9000</li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-4">
+
+							</div>
+						</div>
+							<div class="copyright">
+								<hr>
+								<div class="small text-white text-center" style="margin-bottom:30px;">
+								Copyright &copy;
+								<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by 내일 날씨는 맑음:) </a>
+								</div>
+							</div>
+					</footer>
+					</div>
+				</div>
+
+
+		<!----------------------------
+			 인덱스 삽입 script 시작
+		----------------------------->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			fullset();
+			quickClick();
+		});
+		function fullset(){
+			var pageindex = $("#fullpage > .fullsection").size(); //fullpage 안에 섹션이(.fullsection) 몇개인지 확인하기
+			for(var i=1;i<=pageindex;i++){
+				$("#fullpage > .quick > ul").append("<li></li>");
+			}
+			$("#fullpage .quick ul :first-child").addClass("on"); //일단 화면이 로드 되었을때는 퀵버튼에 1번째에 불이 들어오게
+			//마우스 휠 이벤트
+			$(window).bind("mousewheel", function(event){
+				var page = $(".quick ul li.on");
+				//alert(page.index()+1);  // 현재 on 되어있는 페이지 번호
+				if($("body").find("#fullpage:animated").length >= 1) return false;
+				//마우스 휠을 위로
+				if(event.originalEvent.wheelDelta >= 0) {
+					var before=page.index();
+					if(page.index() >= 0) page.prev().addClass("on").siblings(".on").removeClass("on");//퀵버튼옮기기
+					var pagelength=0;
+					for(var i=1; i<(before); i++)
+					{
+						pagelength += $(".full"+i).height();
+					}
+					if(page.index() > 0){ //첫번째 페이지가 아닐때 (index는 0부터 시작임)
+						page=page.index()-1;
+						$("#fullpage").animate({"top": -pagelength + "px"},1000, "swing");
+					}else{
+						// 1페이지에서 휠을 위로 올릴때.
+					}	
+				}else{ // 마우스 휠을 아래로	
+					var nextPage=parseInt(page.index()+1); //다음페이지번호
+					var lastPageNum=parseInt($(".quick ul li").size()); //마지막 페이지번호
+					//현재페이지번호 <= (마지막 페이지 번호 - 1)
+					//이럴때 퀵버튼옮기기
+					if(page.index() <= $(".quick ul li").size()-1){ 
+						page.next().addClass("on").siblings(".on").removeClass("on");
+					}
+					
+					if(nextPage < lastPageNum){ //마지막 페이지가 아닐때만 animate !
+						var pagelength=0;
+						for(var i = 1; i<(nextPage+1); i++){ 
+							//총 페이지 길이 구하기
+							//ex) 현재 1번페이지에서 2번페이지로 내려갈때는 1번페이지 길이 + 2번페이지 길이가 더해짐
+							pagelength += $(".full"+i).height();
+						}
+						$("#fullpage").animate({"top": -pagelength + "px"},1000, "swing");
+					}
+					else{ // 현재 마지막 페이지 일때는
+						// alert("마지막 페이지 입니다!");
+					};		
+					
+				}
+			});
+			$(window).resize(function(){ 
+				//페이지가 100%이기때문에 브라우저가 resize 될때마다 스크롤 위치가 그대로 남아있는것을 방지하기 위해
+				var resizeindex = $(".quick ul li.on").index()+1;
+				
+				var pagelength=0;
+				for(var i = 1; i<resizeindex; i++){ 
+					//총 페이지 길이 구하기
+					//ex) 현재 1번페이지에서 2번페이지로 내려갈때는 1번페이지 길이 + 2번페이지 길이가 더해짐
+					pagelength += $(".full"+i).height();
+				}
+
+				$("#fullpage").animate({"top": -pagelength + "px"},0);
+			});
+		}
+		// 사이드 퀵버튼 클릭 이동
+		function quickClick(){
+			$(".quick li").click(function(){
+				var gnbindex = $(this).index()+1;
+				var length=0;
+				for(var i=1; i<(gnbindex); i++)
+				{
+					length+=$(".full"+i).height();
+				}
+				if($("body").find("#fullpage:animated").length >= 1) return false;
+				$(this).addClass("on").siblings("li").removeClass("on");
+				
+				$("#fullpage").animate({"top": -length + "px"},800, "swing");
+				return false;
+			});
+		}
+
+		</script>
+
+
+
+
+		</body>
+
+		</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>결제내역확인 :)</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   
+	<script type="text/javascript">
+	function payment(){
+	f.action="/rent/pay"; //결제하기 페이지로 이동
+	f.submit();
+}
+	function cancel(){
+	f.action="/rent/cancel";
+	f.submit();
+}
+</script>
+   
+	<link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Montserrat:400,700|Roboto&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+	<link href="{{ url_for('static', filename='css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+	<div class="site-wrap">
+
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+		  <div class="site-mobile-menu-close mt-3">
+			<span class="icon-close2 js-menu-toggle"></span>
+		  </div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	  </div>
+
+	  <div class="header-top">
+		<div class="container">
+		  <div class="row align-items-center">
+			<div class="col-12 text-center">
+			  <a href="/" class="site-logo">
+				<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Image" class="img-fluid">
+			  </a>
+			</div>
+			<a href="#" class="mx-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+				  class="icon-menu h3"></span></a>
+		  </div>
+		</div>
+		
+  
+  
+		
+		{% if session['logged_in'] == False %}
+      
+      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mx-auto">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+              <li ><a href="/" class="nav-link text-left">홈으로 가기</a></li>
+              <li><a href="/aboutus" class="nav-link text-left">소개</a></li>
+              <li><a href="/board/list" class="nav-link text-left">이용후기</a></li>
+              <li ><a href="/signin" class="nav-link text-left">로그인</a></li>
+              <li><a href="/register" class="nav-link text-left">회원가입</a></li>
+              <li class="active"><a href="/booking" class="nav-link text-left">장비예약하기</a></li>
+            </ul>                                                                                                                                                                                                                                                                                          
+            </nav>
+      
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    
+    {% else %}
+    <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mx-auto">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+              <li ><a href="/" class="nav-link text-left">홈으로 가기</a></li>
+              <li ><a href="/aboutus" class="nav-link text-left">소개</a></li>
+              <li><a href="/board/list" class="nav-link text-left">이용후기</a></li>
+              <li><a href="/logout" class="nav-link text-left">로그아웃</a></li>
+              <li><a href="/mypage" class="nav-link text-left">마이페이지</a></li>
+              <li><a href="/register" class="nav-link text-left">회원가입</a></li>
+              <li class="active"><a href="/booking" class="nav-link text-left">장비예약하기</a></li>
+            </ul>                                                                                                                                                                                                                                                                                          
+            </nav>
+      
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    
+    {% endif %}
+		
+
+	  <div class="hero-2" style="background-image: url('../static/images/head/checklist.jpg');">
+		<div class="container">
+		   <div class="row justify-content-center text-center align-items-center">
+			 <div class="col-md-8">
+			   <span class="sub-title">내일 날씨는 맑음 :)  </span>
+			   <h2> 결제내역 확인</h2>
+			 </div>
+		   </div>
+		 </div>
+	   </div>
+
+<br><br>
+	<!-- Hero Area Section End -->
+	
+	{% if session['logged_in'] == False %}
+	<p>로그인이 필요합니다.</p>
+	
+	{% else %}
+	
+	<br><br><br>
+		<div class="container main-section border p-5 bg-white">
+		<div class="container">
+			<h2 style="margin-left:0%;">결제 확인</h2>
+				<!-- <table class="table table-bordered  -->
+				<table class="table table-bordered table-hover">
+               
+               <thead>
+                  <tr>
+                     <th>예약번호</th>
+                     <th>{{ rentcheck.rentnum }}</th>
+                     <th>이름</th>
+                     <th>{{ rentcheck.rentusername }}</th>
+                  </tr>
+            
+                  <tr>
+                     <th>전화번호</th>
+                     <th>{{ rentcheck.phone }}</th>
+                     <th>빌린날짜</th>
+                     <th>{{ rentcheck.pickupdate }}</th>
+                  </tr>
+                  
+                  <tr>
+                     <th>반납날짜</th>
+                     <th>{{ rentcheck.returndate }}</th>
+                     <th>세트</th>
+                     <th>{{ rentcheck.rentaltype }}</th>
+                  </tr>
+                  
+                  <tr>
+                     <th>가격</th>
+                     <th>{{ maincheck.mainset_price }}</th>
+                     <th>수량</th>
+                     <th>{{ rentcheck.rentalqty }}</th>
+                  </tr>
+                  
+                  <tr>
+                     <th>옵션</th>
+                     <th>{{ rentcheck.addoption }}</th>
+                     <th>옵션 가격</th>
+                     <th>{{ addoptcheck.addoption_price }}</th>
+                  </tr>
+               
+                  <tr>
+                     <th>옵션 수량</th>
+                     <th>{{ rentcheck.optionqty }}</th>
+                     <th>옵션2</th>
+                     <th>{{ rentcheck.addoption2 }}</th>
+                  </tr>
+                  <tr>
+                     <th>옵션2 수량</th>
+                     <th>{{ rentcheck.optionqty2 }}</th>
+                     <th>옵션2 가격</th>
+                     <th>{{ addoptcheck2.addoption_price2 }}</th>
+                  </tr>
+                  <tr>
+                     
+                     <th>요청사항</th>
+                     <th>{{ rentcheck.note }}</th>
+                     <!-- <th>요청사항</th> -->
+                     <!-- <th>{{ rentcheck.rentusername }}</th> -->
+                  </tr>
+               
+               </thead>
+               <br>
+               <Br>
+               
+            </table>
+					<table class="table table-bordered">
+					<thead>
+						<tr>
+							<br><br>
+							<th>총액</th>
+							<th>{{ (maincheck.mainset_price * rentcheck.rentalqty)+
+								(addoptcheck.addoption_price * rentcheck.optionqty)+
+								(addoptcheck2.addoption_price2 * rentcheck.optionqty2) }}</th>
+						</tr>
+					</thead>
+					
+				</table>
+	
+				<form name="f" action="" >
+					<div class="text-center">
+					<td>
+					<input type="button" value = "결제하기" class="btn btn-dark" onClick="payment()"></button>
+					<input type="button" value = "취소하기" class="btn btn-dark" onClick="cancel()"></button>
+						</td>
+					</div>
+				</form>
+			</table>
+		</div>
+		
+		
+	</div>
+	
+	{% endif %}
+	
+	<!-- .site-wrap -->
+	
+	<div class="footer-section" style="margin-top:10%">
+		<hr>
+		<div class="row" style="margin-top:20px;">
+		  <div class="col-lg-4"></div>
+		  <div class="col-lg-4">
+			<div class="footer-item" display="d-inline-block" >
+			  <h5 style="font-size:larger">Contact Info</h5>
+			  <ul>
+				<p><img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;우림라이온스빌딩 601호,서울특별시 금천구 가산동 371-28</p>
+				<p><img src="{{ url_for('static', filename='images/phone.png') }}" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+82 (02)2025-9000</p>
+			  </ul>
+			</div>
+		  </div>
+		  <div class="col-lg-4">
+		  </div>
+		</div>
+		  <div class="copyright">
+			<hr>
+			<div class="small text-center" style="margin-bottom:30px; color:mediumpurple; ">
+			Copyright &copy;
+			<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by 내일 날씨는 맑음:) </a>
+			</div>
+		  </div>
+	  </div>
+	  
+
+
+	
+	
+	
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

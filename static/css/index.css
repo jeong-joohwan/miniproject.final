@@ -1,0 +1,468 @@
+* {
+	font-family: Arial, 'Source Sans Pro';
+}
+
+
+/*Loader*/
+#loader {
+	background-color: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: ease;
+}
+
+
+#loader svg {
+	width: 200px;
+}
+
+#loader.none {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.scroll-bar {
+	overflow: hidden;
+}
+
+.horizontal {
+	width: 10%;
+	margin: 1em 0 2em 0;
+	height: 1px;
+	background-color: #d4af37;
+	border: none;
+}
+.block12 {
+    margin-bottom: 5px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    display: block;
+}
+p {
+	font-size: 18px;
+}
+h2 {
+	font-size: 40px;
+}
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.col {
+	padding: 5px;
+	flex-wrap: nowrap;
+}
+
+.image-col {
+	margin-right: 7%;
+}
+
+.image-col img {
+	margin: 5px;
+}
+
+.small-image {
+	height: 105px;
+}
+
+.large-image {
+	height: 227px;
+}
+
+.side-by-side-container {
+	display: flex;
+}
+
+.large-image-container {
+	margin-right: 7px;
+}
+
+.stacked-image-container {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1px;
+}
+/* Header section--------------------- */
+.page-header-container {
+	margin-bottom: 70px;
+}
+
+.page-header-span {
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 100px;
+}
+.page-header {
+	/* font-weight: 500; */
+	text-align: center;
+	padding: 0 150px 0 0;
+}
+
+.page-header:after {
+	display: block;
+	height: 1px;
+	background-color: #d4af37;
+	content: '';
+	width: 90px;
+	margin: 0.5em auto 0 auto;
+}
+
+.page-sub-header {
+	font-size: 75%;
+	text-align: center;
+	letter-spacing: 0.01em;
+	font-weight: 300;
+	color: #3b331a;
+}
+
+/* Header End-------------------------------- */
+.symbols:hover {
+    background: gold;
+
+}
+/* Jumbotron class */
+
+/* Beginning of enjoy your stay section */
+
+.first-col {
+	/* border: 1px solid black; */
+	flex: 1;
+	margin-right: 2em;
+}
+.sec-col {
+	/* border: 1px solid black; */
+	flex: 1;
+	margin-right: 2em;
+}
+.third-col {
+	/* border: 1px solid black; */
+	flex: 2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+
+/* End----------------------- */
+
+/* Beginning of simplicity is our watch word section styling */
+.special-offers {
+	padding: 0 0 80px;
+}
+
+.offers-title {
+	font-size: 165%;
+	margin: 25px 0 15px;
+}
+
+.offers-sub-title {
+	font-size: 18px;
+	color: #3b331a;
+	font-weight: 300;
+	margin-bottom: 20px;
+}
+
+.offers-list {
+	list-style: none;
+	margin-bottom: 30px;
+}
+
+.offers-list li {
+	margin: 12px 0;
+}
+
+.list-icon {
+	height: 17px;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+
+.list-text {
+	display: inline-block;
+}
+
+.btn {
+	border-radius: 3px;
+	border: 1px solid #d4af37;
+	text-transform: uppercase;
+	font-size: 55%;
+	padding: 10px 18px;
+	font-weight: 400;
+	text-decoration: none;
+	transition: all 0.3s;
+	margin-right: 10px;
+}
+
+.btn-fill {
+	background-color: #d4af37;
+	color: #fff;
+}
+.rates {
+	border-radius: 5px;
+}
+
+.rates:active,
+.rates:hover {
+	background-color: #c9a633;
+	border: 1px solid #c9a633;
+}
+
+.btn-fill:hover,
+.btn-fill:active {
+	background-color: #c9a633;
+	transform: translateY(-3px);
+	border: 1px solid #c9a633;
+}
+
+.btn-ghost {
+	color: #d4af37;
+	background-color: #fff;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+	background-color: #d4af37;
+	color: #fff;
+}
+
+.btn-large {
+	font-size: 16px;
+	width: 133px;
+	padding: 12px 22px;
+	border-radius: 4px;
+}
+
+/* End----------------------------*/
+
+/* Beginning of client review section styles */
+.review-container {
+	width: 80%;
+	margin: 1em auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.review-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.review-header > p {
+	text-align: center;
+}
+
+/* End----------------------------------------- */
+
+/* @media queries */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+	.image-col {
+		margin: auto;
+	}
+	.jumbotron-container {
+		width: 100%;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.jumbotron-left {
+		padding: 1rem;
+		margin-top: 1rem;
+	}
+
+	.jumbotron-header {
+		font-size: 30px;
+		text-align: center;
+	}
+
+	.jumbotron-header br {
+		display: none;
+	}
+
+	.enjoy-services {
+		flex-direction: column;
+	}
+	.enjoy-header,
+	.enjoy-container,
+	.enjoy-header h1 {
+		text-align: center;
+	}
+	.enjoy-header > p {
+		width: 100%;
+	}
+	/* Enjoy section icons for mobile */
+	.enjoy__clock-icon,
+	.enjoy__fitness-icon,
+	.enjoy__wifi-icon,
+	.enjoy__coffee-icon {
+		position: unset;
+		padding: 0.5rem;
+	}
+	.page-header {
+		text-align: center;
+		padding: 1rem;
+		font-size: 30px;
+	}
+	.cards-container {
+		flex-direction: column;
+	}
+	.card {
+		margin-bottom: 1em;
+	}
+	.page-header:after {
+		margin: 0.5em auto 0 auto;
+		height: 2px;
+	}
+
+	.page-header-container {
+		margin-bottom: 10px;
+	}
+	.btn-large {
+		margin-bottom: 1em;
+		margin: auto;
+		font-weight: 700;
+		font-size: 77%;
+		padding: 15px 27px;
+	}
+
+	.horizontal {
+		margin: 1em auto 2em auto;
+	}
+
+	.first-col,
+	.sec-col {
+		margin-right: unset;
+	}
+
+	.upper,
+	.lower {
+		padding-left: unset;
+	}
+
+	.third-col {
+		order: -1;
+		margin-bottom: 1rem;
+	}
+
+	.third-col-video {
+		width: 100%;
+		filter: drop-shadow(2px 4px 6px black);
+	}
+
+	.side-by-side-container {
+		flex-direction: column;
+	}
+
+	.stacked-image-container {
+		flex-direction: row;
+	}
+
+	.offers-sub-title {
+		padding: 1rem;
+	}
+
+	.offers-sub-title br {
+		display: none;
+	}
+
+	.offers-list {
+		margin-left: 1.5rem;
+	}
+
+	.centered {
+		margin: auto;
+		display: block;
+		width: 50%;
+		text-align: center;
+	}
+
+	.img-hide {
+		display: none;
+	}
+	.review-title {
+		text-align: center;
+		font-size: 30px;
+	}
+
+	.card {
+		width: 100%;
+	}
+
+	.card-avi {
+		width: 30%;
+		display: block;
+		margin: 1.5rem auto;
+	}
+
+	.card-title,
+	.card-subtitle {
+		width: 100%;
+		text-align: center;
+	}
+
+	.card-subtitle {
+		font-weight: 300;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.small-image {
+		display: none;
+	}
+
+	.large-image {
+		width: 100%;
+		object-fit: cover;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 700px) {
+	.jumbotron-container {
+		width: 100%;
+		flex-direction: column;
+		align-items: center;
+	}
+	.btn-large {
+		margin: 0.5em auto 1em 1em;
+	}
+	
+}
+@media only screen and (min-width: 700px) {
+	.jumbotron-form {
+		margin: 1em 0;
+	}
+	.jumbotron-form h3 {
+		padding-top: 1em;
+		font-size: 25px;
+		text-align: center;
+	}
+	.jumbotron-form p {
+		font-size: 18px;
+	}
+
+	.rates {
+		margin-bottom: 1em;
+	}
+}
+@media only screen and (min-width: 954px) {
+	.jumbotron-container {
+		width: 100%;
+		flex-direction: row;
+		align-items: center;
+	}
+	.enjoy-services {
+		flex-direction: row;
+	}
+}

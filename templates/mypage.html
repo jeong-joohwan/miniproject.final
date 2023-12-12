@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>Meranda &mdash; Website Template by Colorlib</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<script type="text/javascript">
+                        function infoModify(){		
+                            f.action="/myinfo";
+                            f.submit();	
+                        }
+                        function infoRemove(){
+                          f.action="/unjoin";
+                          f.submit();
+                        }
+            </script>
+   
+	<link href="https://fonts.googleapis.com/css?family=Cinzel:400,700|Montserrat:400,700|Roboto&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+  <link href="{{ url_for('static', filename='css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+	<div class="site-wrap">
+
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+		  <div class="site-mobile-menu-close mt-3">
+			<span class="icon-close2 js-menu-toggle"></span>
+		  </div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	  </div>
+
+	  <div class="header-top">
+		<div class="container">
+		  <div class="row align-items-center">
+			<div class="col-12 text-center">
+			  <a href="/" class="site-logo">
+				<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Image" class="img-fluid">
+			  </a>
+			</div>
+			<a href="#" class="mx-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
+				  class="icon-menu h3"></span></a>
+		  </div>
+		</div>
+		
+  
+  
+		
+		{% if session['logged_in'] == False %}
+      
+      <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mx-auto">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+              <li ><a href="/" class="nav-link text-left">홈으로 가기</a></li>
+              <li ><a href="/aboutus" class="nav-link text-left">소개</a></li>
+              <li><a href="/board/list" class="nav-link text-left">이용후기</a></li>
+              <li ><a href="/signin" class="nav-link text-left">로그인</a></li>
+              <li><a href="/register" class="nav-link text-left">회원가입</a></li>
+              <li><a href="/booking" class="nav-link text-left">장비예약하기</a></li>
+            </ul>                                                                                                                                                                                                                                                                                          
+            </nav>
+      
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    
+    {% else %}
+    <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
+
+      <div class="container">
+        <div class="d-flex align-items-center">
+          
+          <div class="mx-auto">
+            <nav class="site-navigation position-relative text-left" role="navigation">
+            <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
+              <li ><a href="/" class="nav-link text-left">홈으로 가기</a></li>
+              <li ><a href="/aboutus" class="nav-link text-left">소개</a></li>
+              <li><a href="/board/list" class="nav-link text-left">이용후기</a></li>
+              <li><a href="/logout" class="nav-link text-left">로그아웃</a></li>
+              <li class="active"><a href="/mypage" class="nav-link text-left">마이페이지</a></li>
+              <li><a href="/register" class="nav-link text-left">회원가입</a></li>
+              <li><a href="/booking" class="nav-link text-left">장비예약하기</a></li>
+            </ul>                                                                                                                                                                                                                                                                                          
+            </nav>
+      
+          </div>
+         
+        </div>
+      </div>
+
+    </div>
+    
+    {% endif %}
+	  
+	  </div>
+
+	  <div class="hero-2" style="background-image: url('../static/images/head/mypage.jpg');">
+		<div class="container">
+		   <div class="row justify-content-center text-center align-items-center">
+			 <div class="col-md-8">
+			   <span class="sub-title">내일 날씨는 맑음 :)  </span>
+			   <h2>캠핑장비 결제확인</h2>
+			 </div>
+		   </div>
+		 </div>
+	   </div>
+
+<br><br>
+    
+
+    <!-- <div class="site-section">
+      <div class="container">
+        <div class="row"> -->
+          <!-- <div class="col-lg-8 single-content"> -->
+            <!-- <p class="mb-5">
+              <img src="images/big_img_1.jpg" alt="Image" class="img-fluid">
+            </p>  
+            <p>개인정보 수정 및 예약내용 확인</p> -->
+
+            <!-- 아래부터 기존의 mypage 삽입입니다. -->
+            
+            
+            {% if session['logged_in'] %}
+            
+
+              <div class="row justify-content-center align-self-center">
+                  <div class="container main-section border p-5 bg-white" style="max-width: 1600px; margin-left: 10%;">
+                    <div class="text-center"><h1>회원정보</h1></div> 
+                      
+                      <table class="table table-striped table-hover" >
+                          <thead>
+                              <tr style="font-size: 10px;">
+                                  <th><h3>아이디</h3></th>
+                                  <th><h3>이름</h3></th>
+                                  <th><h3>핸드폰</h3></th>
+                                  
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td><h3> {{ user.id }}</h3></td>
+                                  <td><h3> {{ user.name }}</h3></td>
+                                  <td><h3> {{ user.phone }}</h3></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <div class="text-center">
+                          <form name="f" action="">
+                              <input type="button" value = "회원정보수정" class="btn btn-primary btn-lg" onClick="infoModify()"></button>
+                              <input type="button" value = "회원탈퇴" class="btn btn-dark btn-lg" onClick="infoRemove()"></button>
+                          </form>                 
+                      </div> 
+                  </div>
+              </div>
+          <br>
+          <br>
+          <br>
+
+          {% for rent in rents %}
+          <br>
+          <br>
+          <br>
+  
+
+              <div class="container main-section border p-5 bg-white" style="max-width: 1600px; margin-left: 10%;">
+
+            <div class="text-center"><h1>이용정보</h1></div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th><h5>이름</h5></th>
+                            <th><h5>전화번호</h5></th>
+                            <th><h5>픽업일자</h5></th>
+                            <th><h5>반납일자</h5></th>
+                            <th><h5>픽업/반납 지점</h5></th>
+                            <th><h5>기타요청사항</h5></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><h5>{{ rent.rentusername }}</h5></td>
+                            <td><h5>{{ rent.phone }}</h5></td>
+                            <td><h5>{{ rent.pickupdate }}</h5></td>
+                            <td><h5>{{ rent.returndate }}</h5></td>
+                            <td><h5>{{ rent.pickreturnplace }}</h5></td>
+                            <td><h5>{{ rent.note }}</h5></td>
+                            
+                        </tr>
+                    </tbody>
+                    <thead>
+                        <tr>
+                            <th><h5>장비유형</h5></th>
+                            <th><h5>수량</h5></th>
+                            <th><h5>추가옵션</h5></th>
+                            <th><h5>수량</h5></th>
+                            <th><h5>추가옵션2</h5></th>
+                            <th><h5>수량</h5></th>
+                            
+                      
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><h5>{{ rent.rentaltype }}</h5></td>
+                            <td><h5>{{ rent.rentalqty }}</h5></td>
+                            <td><h5>{{ rent.addoption }}</h5></td>
+                            <td><h5>{{ rent.optionqty }}</h5></td>
+                            <td><h5>{{ rent.addoption2 }}</h5></td>
+                            <td><h5>{{ rent.optionqty2 }}</h5></td>
+                            
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+
+          {% endfor %}
+          
+          {% else %}
+          
+          {% endif %}
+          <!-- 기존의 마이페이지 삽입 끝 -->
+
+
+          
+
+          <!-- </div>
+
+        </div>
+        </div>
+        
+      </div>
+    </div>
+    <hr>
+ -->
+
+
+
+    <div class="footer">
+      <div class="container">		
+        </div>
+        <div class="row">
+        <div class="col-12">
+        <div class="copyright">
+        <div class="footer-item" display="d-inline-block" >
+          <h5>Contact Info</h5>
+          <ul>
+          <li><img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="">우림라이온스빌딩 601호,서울특별시 금천구 가산동 371-28</li>
+          <li><img src="{{ url_for('static', filename='images/phone.png') }}" alt="">+82 (02)2025-9000</li>
+          </ul>
+          </div>
+          <p>
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+           All rights reserved | This website is by 내일 날씨는 맑음 :) </a>
+          </p>
+      
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+      
+  
+</div>
+  
+  <!-- .site-wrap -->
+
+
+  <!-- loader -->
+  <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#ff5e15"/></svg></div>
+
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.fancybox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.mb.YTPlayer.min.js') }}"></script>
+
+
+
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>
